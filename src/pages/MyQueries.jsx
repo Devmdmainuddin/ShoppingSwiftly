@@ -1,10 +1,11 @@
-import AddQueries from "../components/AddQueries";
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet-async";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import BannerMyQueries from "../components/BannerMyQueries";
 
 
 const MyQueries = () => {
@@ -67,114 +68,73 @@ const MyQueries = () => {
         });
 
     }
+
+
+
+
     return (
         <div>
-            <AddQueries></AddQueries>
+            <BannerMyQueries></BannerMyQueries>
+
+
+
 
             <div className="max-w-[1200px] mx-auto">
                 <Helmet>
-                    <title>Brush Tech Artisty | MyArtCraft </title>
+                    <title>shopSwiftly | MyQuries </title>
                 </Helmet>
-                <section className="container px-4 mx-auto">
-                    <div className="flex items-center gap-x-3">
-                        <h2 className="text-lg font-medium text-gray-800 dark:text-white">my Art & Craft</h2>
+                <section className="container px-4 ">
+                    <div className="flex items-center gap-x-6 justify-center">
+                        <h2 className="text-center text-2xl text-slate-600 my-7">my Quries</h2>
 
-                        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">total cart : {queries.length}</span>
+                        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">total Quries : {queries.length}</span>
                     </div>
 
-                    <div className="flex flex-col mt-6">
-                        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                                <div className="overflow-hidden border border-gray-200  md:rounded-lg">
-                                    <table className="min-w-full divide-y divide-gray-200 ">
-                                        <thead className="bg-gray-50 dark:bg-gray-800">
-                                            <tr>
-                                                <th scope="col" className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+                        {queries ? queries.map(p =>
+                            <article key={p._id} className="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+                                <img
+                                    alt=""
+                                    src={p.image}
+                                    className="h-56 w-full object-cover"
+                                />
+
+                                <div className="bg-white p-4 sm:p-6">
 
 
-                                                    <span>ID</span>
+                                    <h3 className="mt-1  text-xs text-gray-500 "> {p.queryTitle} </h3>
+                                    <h2 className="block text-[16px] text-gray-900 "> {p.productName} </h2>
 
-                                                </th>
-
-                                                <th scope="col" className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                    <h2>image</h2>
-                                                </th>
-
-                                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                    <h2>item_name</h2>
-                                                </th>
-
-                                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                    price</th>
-
-                                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                    rating</th>
-                                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                    customization</th>
-
-                                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                    stockStatus </th>
-                                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                    action </th>
+                                    <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                                    {p.brandName}
+                                    </p>
+                                    <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs text-gray-400">
+                                        <span>{p.createAt} </span>
+                                        <span>{p.recommendationCount}</span>
+                                    </div>
+                                    <div className="flex  justify-between items-center pt-3 space-x-2 text-xs text-gray-400">
+                                        <span> {p.userInfo.reName} </span>
+                                        <span>{p.userInfo.reEmail}</span>
+                                    </div>
+                                    <div className="flex items-center justify-center gap-x-3 mt-3">
+                                        <Link to={`/queries/${p._id}`} className="block text-center  rounded text-white px-6 py-2 text-sm font-medium bg-teal-500 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto" ><button>details</button></Link>
+                                        <button onClick={() => handledelete(p._id)} className="block text-center  rounded text-white px-6 py-2 text-sm font-medium bg-teal-500 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto">delete </button>
+                                        <Link to={`/UpdateQueries/${p._id}`} className="block text-center   rounded text-white px-6 py-2 text-sm font-medium bg-teal-500 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto">eddit </Link>
+                                    </div>
 
 
-                                            </tr>
-                                        </thead>
-                                        {
-                                            queries?.map(items => (
-                                                <tbody key={items._id} className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                                    <tr>
-                                                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                            {items._id}
-                                                        </td>
-                                                        <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-
-                                                            <img className="w-12" src={items.image} alt="images" />
-
-                                                        </td>
-                                                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            {/* {items.title} */}
-                                                        </td>
-                                                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            ${items.productName}</td>
-                                                        <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                                            <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                                                                {items.brandName}</p>
-                                                        </td>
-                                                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            {items.queryTitle}</td>
-                                                        <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                                            <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                                                                {items.boycotReason}</p>
-                                                        </td>
-                                                        <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                                            <div className="flex items-center gap-x-6">
 
 
-                                                                <button onClick={() => handledelete(items._id)} className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                                                                    </svg>
-                                                                </button>
-
-                                                                <Link to={`/UpdateQueries/${items._id}`}>
-                                                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                                        </svg>
-                                                                    </button></Link>
-
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            ))
-                                        }
-
-                                    </table>
                                 </div>
-                            </div>
-                        </div>
+
+                            </article>
+                        ) : <article>
+                            <p>queries not fond plass add queries</p>
+                            <Link to='/addQueries' className="bg-pink-700 text-white py-2 px-7 rounded-md mt-7 inline-block ">add Queries</Link>
+                        </article>}
+
+
                     </div>
                 </section>
 
@@ -184,3 +144,4 @@ const MyQueries = () => {
 };
 
 export default MyQueries;
+

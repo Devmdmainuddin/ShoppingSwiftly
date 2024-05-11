@@ -64,7 +64,7 @@ const AddQueries = () => {
                     <title>shopSwiftly | AddQueries </title>
                 </Helmet>
                 <div className="flex flex-col items-center">
-                    <h2 className="text-3xl font-bold">add Queries </h2>
+                    <h2 className="text-center text-2xl text-slate-600 my-7">add Queries </h2>
                     <div className="horizontalLine mt-6">
                     </div>
 
