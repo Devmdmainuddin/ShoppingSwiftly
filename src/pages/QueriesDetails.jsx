@@ -1,18 +1,32 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import '../App.css'
 import Swal from 'sweetalert2'
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import useRecommendation from "../hooks/useRecommendation";
+import { useEffect, useState } from "react";
 
 const QueriesDetails = () => {
     const { user } = useAuth() || {}
     const items = useLoaderData();
+    const recomment = useRecommendation()
     console.log(items)
+    console.log(recomment)
+    const [reitems, setrecommentitems] = useState([])
+    console.log(reitems)
+
+    useEffect(() => {
+        const filteritems = recomment.filter(p => p.queryId == items._id)
+        console.log(filteritems)
+        setrecommentitems(filteritems)
+
+    }, [items, recomment])
+
 
     const handleAddProduct = async (e) => {
 
-        e.preventDefault();
+       e.preventDefault();
         console.log('ok')
         const form = e.target;
         const image = form.image.value;
@@ -27,9 +41,11 @@ const QueriesDetails = () => {
         const reEmail = user.email;
         const currentTime = (new Date()).toDateString();
         const reuserInfo = { reName, reEmail }
-        const recommendationCount = (items.recommendationCount)+(1);
+        const recommendationCount = (items.recommendationCount) + (1);
         const info = { image, retitle, recProName, reReason, queryId, productName, autherName, currentTime, autherEmail, reuserInfo };
         const recoupdate = { recommendationCount }
+
+
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/addRecommendation`, info)
             console.log(data)
@@ -38,16 +54,16 @@ const QueriesDetails = () => {
 
                 const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${items._id}`, recoupdate)
                 console.log(data)
-
-
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
                     title: " add art & craft items ",
                     showConfirmButton: false,
                     timer: 1500
-                    // recommendationCount +
+
                 });
+                const remaining = recomment.filter(p => p.queryId == items._id)
+                setrecommentitems(remaining);
             }
         }
         catch (err) {
@@ -62,6 +78,8 @@ const QueriesDetails = () => {
         }
 
     };
+
+
     return (
         <div>
             <Helmet>
@@ -182,6 +200,47 @@ const QueriesDetails = () => {
                 />
 
             </form>
+
+            <h2>All Recommendations</h2>
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+                {reitems.map(p =>
+                    <article key={p._id} className="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+                        <img
+                            alt=""
+                            src={p.image}
+                            className="h-56 w-full object-cover"
+                        />
+
+                        <div className="bg-white p-4 sm:p-6">
+                            <h3 dateTime="2022-10-10" className="block text-xs text-gray-500"> {p.productName} </h3>
+
+                            <a href="#">
+                                <h3 className="mt-0.5 text-lg text-gray-900">{p.brandName}</h3>
+                            </a>
+
+                            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                                {p.queryTitle}
+                            </p>
+                            <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs text-gray-400">
+                                <span>{p.currentTime} </span>
+                                <span>{p.recommendationCount}</span>
+                            </div>
+                            <div className="flex  justify-between items-center pt-3 space-x-2 text-xs text-gray-400">
+                                <span> {p.reuserInfo.reName} </span>
+                                <span>{p.reuserInfo.reEmail}</span>
+                            </div>
+                            <Link to={`/queries/${p._id}`} className="block text-center mt-3 w-full rounded text-white px-12 py-3 text-sm font-medium bg-rose-600 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto" ><button>recommend</button></Link>
+                        </div>
+
+                    </article>
+                )}
+
+            </div>
+
+
 
         </div>
     );

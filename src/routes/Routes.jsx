@@ -8,10 +8,12 @@ import Queries from '../pages/Queries';
 import QueriesDetails from '../pages/QueriesDetails'
 import MyRecommendation from '../pages/MyRecommendation';
 import QueriesUpdate from '../pages/QueriesUpdate';
+import ErrorPage from '../ErrorPage/ErrorPage';
 const router = createBrowserRouter([
     {
       path: "/",
       element:<Layouts></Layouts>,
+      errorElement:<ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
