@@ -10,12 +10,7 @@ const Querie = ({item}) => {
             src={image}
             className="h-56 w-full object-cover"
         />
-{/* <a href="https://ibb.co/vqst8jN"><img src="https://i.ibb.co/fF8c7x3/F9j-GGPms-NSZo-Sj-Egqto8e-Z.png" alt="F9j-GGPms-NSZo-Sj-Egqto8e-Z" border="0"></a> */}
-        {/* <a href="https://ibb.co/DCnN4Hw"><img src="https://i.ibb.co/swrhjds/erick-cerritos-i5-UV2-Hp-ITYA-unsplash.jpg" alt="erick-cerritos-i5-UV2-Hp-ITYA-unsplash" border="0"></a><br /><a target='_blank' href='https://emoticoncentral.com/category/high-heeled-shoe'>high-heeled shoe</a><br /> */}
-{/* <a href="https://imgbb.com/"><img src="https://i.ibb.co/S6kZC0f/29.jpg" alt="29" border="0"></a> */}
-        {/* <a href="https://imgbb.com/"><img src="https://i.ibb.co/wRFM4nx/timmer-product-2.jpg" alt="timmer-product-2" border="0"></a> */}
-        {/* <a href="https://ibb.co/G5vq02C"><img src="https://i.ibb.co/vjxSHPL/f1.jpg" alt="f1" border="0"></a> */}
-{/* https://i.ibb.co/7Jhnb4M/images.jpg */}
+
         <div className="bg-white p-4 sm:p-6">
             <h3 dateTime="2022-10-10" className="block text-xs text-gray-600">Queries : {queryTitle}   </h3>
             <h3 className="mt-1 text-lg text-gray-900"> {productName} </h3>
