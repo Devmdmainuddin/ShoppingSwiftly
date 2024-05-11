@@ -5,20 +5,16 @@ import Swal from 'sweetalert2'
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import useRecommendation from "../hooks/useRecommendation";
-import { useEffect, useState } from "react";
+ import {  useEffect, useState } from "react";
 
 const QueriesDetails = () => {
     const { user } = useAuth() || {}
     const items = useLoaderData();
     const recomment = useRecommendation()
-    console.log(items)
-    console.log(recomment)
     const [reitems, setrecommentitems] = useState([])
-    console.log(reitems)
 
     useEffect(() => {
         const filteritems = recomment.filter(p => p.queryId == items._id)
-        console.log(filteritems)
         setrecommentitems(filteritems)
 
     }, [items, recomment])
@@ -51,9 +47,12 @@ const QueriesDetails = () => {
             console.log(data)
             if (data?.insertedId) {
                 form.reset();
-
+           
                 const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${items._id}`, recoupdate)
                 console.log(data)
+                const filteritems = recomment.filter(p => p.queryId == items._id)
+                // console.log(filteritems)
+                setrecommentitems(filteritems)
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -62,8 +61,7 @@ const QueriesDetails = () => {
                     timer: 1500
 
                 });
-                const remaining = recomment.filter(p => p.queryId == items._id)
-                setrecommentitems(remaining);
+     
             }
         }
         catch (err) {

@@ -22,15 +22,70 @@ const Carousel = () => {
           }}
          modules={[Navigation,Autoplay]}  className="mySwiper">
 
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>
+          <div id="slide1" className="carousel-item relative w-full">
+                <img  src="https://i.ibb.co/zSHGLtR/14.jpg" className="w-full h-[400px] object-cover" />
+           
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">
+           
+                </div>
+            </div>
+            </SwiperSlide>
+        <SwiperSlide>
+        <div id="slide2" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/Dpdwj5m/10.jpg" className="w-full  h-[400px] object-cover" />
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">
+          
+                   
+                </div>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div id="slide3" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/nMGKqWx/7.jpg" className="w-full  h-[400px] object-cover" />
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">
+    
+                </div>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div id="slide4" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/1m3W3Pj/6.jpg" className="w-full  h-[400px] object-cover" />
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">
+
+                </div>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div id="slide3" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/nMGKqWx/7.jpg" className="w-full  h-[400px] object-cover" />
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">
+
+                </div>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div id="slide2" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/Dpdwj5m/10.jpg" className="w-full  h-[400px] object-cover" />
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">  
+                </div>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div id="slide2" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/Dpdwj5m/10.jpg" className="w-full  h-[400px] object-cover" />
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">    
+                </div>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div id="slide2" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/Dpdwj5m/10.jpg" className="w-full  h-[400px] object-cover" />
+                <div className="absolute flex justify-end transform -translate-y-1/2 left-auto right-7 bottom-[40px]">
+                </div>
+            </div>
+        </SwiperSlide>
+       
 
       </Swiper>
     </>
