@@ -12,8 +12,7 @@ const MyRecommendation = () => {
     const { user } = useAuth() || {}
     const ite = useQueries()
     const [queries, setqueries] = useState([])
-    console.log(user.email)
-    console.log(queries)
+
     const [parent, setparent] = useState([])
 
     console.log(parent)
@@ -35,7 +34,6 @@ const MyRecommendation = () => {
         const updataitems = ite.find(p => p._id === itm.queryId)
         const recommendationCount = (updataitems.recommendationCount) - (1);
         const recoupdate = { recommendationCount }
-        console.log(updataitems)
         setparent(updataitems)
         const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${updataitems._id}`, recoupdate)
                             console.log(data)
@@ -88,10 +86,9 @@ const MyRecommendation = () => {
         <div>
 
             <section className="container px-4 mx-auto">
-                <div className="flex items-center gap-x-3">
-                    <h2 className="text-lg font-medium text-gray-800 dark:text-white">my Art & Craft</h2>
-
-                    <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">total cart : {queries.length}</span>
+                <div className="flex items-center gap-x-6 justify-center">
+                    <h2 className="text-center text-2xl text-slate-600 my-7">my recommendation</h2>
+                    <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">total  : {queries.length}</span>
                 </div>
 
                 <div className="flex flex-col mt-6">
@@ -104,7 +101,7 @@ const MyRecommendation = () => {
                                             <th scope="col" className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
 
-                                                <span>ID</span>
+                                                <span>QueryTitle</span>
 
                                             </th>
 
@@ -113,19 +110,15 @@ const MyRecommendation = () => {
                                             </th>
 
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                <h2>item_name</h2>
+                                                <h2>productName</h2>
                                             </th>
 
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                price</th>
+                                            QueryTitle</th>
 
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                rating</th>
-                                            <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                customization</th>
-
-                                            <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                stockStatus </th>
+                                            created </th>
+                                           
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                                 action </th>
 
@@ -144,21 +137,15 @@ const MyRecommendation = () => {
                                                         <img className="w-12" src={items.image} alt="images" />
 
                                                     </td>
-                                                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                        {/* {items.title} */}
-                                                    </td>
+                                                   
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                         ${items.productName}</td>
-                                                    <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                                        <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                                                            {items.brandName}</p>
-                                                    </td>
+                                                   
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                         {items.queryTitle}</td>
-                                                    <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                                        <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                                                            {items.boycotReason}</p>
-                                                    </td>
+                                                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                        {items.autherName}</td>
+                                                   
                                                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                                                         <div className="flex items-center gap-x-6">
 
