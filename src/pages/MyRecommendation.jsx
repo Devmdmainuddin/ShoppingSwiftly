@@ -13,30 +13,48 @@ const MyRecommendation = () => {
     const ite = useQueries()
     const [queries, setqueries] = useState([])
 
-    const [parent, setparent] = useState([])
 
-    console.log(parent)
-    
+    console.log(ite)
+    // const [parent, setparent] = useState([])
+
+    // console.log(parent)
+
     // .......................................
     useEffect(() => {
 
+// fetch(`http://localhost:5000/myRecommendation?email=${user?.email}`, {
+//             credentials: 'include'
+//         })
+//             .then((res) => res.json())
+//             .then((data) => {
+//                 setqueries(data);
+
+//             });
+
+
+
         getData()
     }, [user])
+
     const getData = async () => {
         const { data } = await axiosSecure(`${import.meta.env.VITE_API_URL}/myRecommendation?email=${user?.email}`)
         setqueries(data);
     }
 
+ 
+
     // .........................................................................
 
     const handledelete = async (itm) => {
-       
+
         const updataitems = ite.find(p => p._id === itm.queryId)
         const recommendationCount = (updataitems.recommendationCount) - (1);
         const recoupdate = { recommendationCount }
-        setparent(updataitems)
+       
+
         const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${updataitems._id}`, recoupdate)
-                            console.log(data)
+        console.log(data)
+
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -47,7 +65,7 @@ const MyRecommendation = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                
+
 
                 fetch(`${import.meta.env.VITE_API_URL}/recommendation/${itm._id}`, {
                     method: 'DELETE'
@@ -56,25 +74,12 @@ const MyRecommendation = () => {
                     .then(data => {
                         console.log(data)
                         if (data.deletedCount > 0) {
-
-                           
-                            
-                            // fetch(`${import.meta.env.VITE_API_URL}/updaterecommen/${updataitems._id}`, recommendationCount, {
-                            //     method: 'put'
-                            // })
-                            //     .then(res => res.json())
-                            //     .then(data => {
-                            //         console.log(data)
-                            //     })
-                        
-
-
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            const remaining = queries.filter(craft => craft._id !== itm._id);
+                            const remaining = queries.filter(p => p._id !== itm._id);
                             setqueries(remaining);
                         }
                     })
@@ -114,11 +119,11 @@ const MyRecommendation = () => {
                                             </th>
 
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            QueryTitle</th>
+                                                QueryTitle</th>
 
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            created </th>
-                                           
+                                                created </th>
+
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                                 action </th>
 
@@ -137,15 +142,15 @@ const MyRecommendation = () => {
                                                         <img className="w-12" src={items.image} alt="images" />
 
                                                     </td>
-                                                   
+
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                         ${items.productName}</td>
-                                                   
+
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                         {items.queryTitle}</td>
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                         {items.autherName}</td>
-                                                   
+
                                                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                                                         <div className="flex items-center gap-x-6">
 

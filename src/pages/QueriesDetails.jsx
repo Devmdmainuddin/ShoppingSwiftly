@@ -57,7 +57,7 @@ const QueriesDetails = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: " add art & craft items ",
+                    title: " add recommendation items ",
                     showConfirmButton: false,
                     timer: 1500
 
@@ -70,7 +70,7 @@ const QueriesDetails = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: " add art & craft items faile",
+                title: " add recommendation faile",
                 showConfirmButton: false,
                 timer: 1500
             });

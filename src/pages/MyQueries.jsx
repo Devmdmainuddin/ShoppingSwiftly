@@ -11,25 +11,17 @@ import BannerMyQueries from "../components/BannerMyQueries";
 const MyQueries = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth() || {}
-    const [queries, setqueries] = useState([])
-    const [item, setItem] = useState([]);
+   const [queries, setqueries] = useState([])
+   
     console.log(user.email)
-    console.log(queries)
-    console.log(item)
-    useEffect(() => {
-        fetch(`http://localhost:5000/myQueries?email=${user?.email}`, {
-            credentials: 'include'
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setqueries(data);
 
-            });
+    useEffect(() => {
+        
         getData()
     }, [user])
     const getData = async () => {
         const { data } = await axiosSecure(`${import.meta.env.VITE_API_URL}/myQueries?email=${user?.email}`)
-        setItem(data)
+        setqueries(data);
     }
 
 
@@ -56,8 +48,10 @@ const MyQueries = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            const remaining = item.filter(craft => craft._id !== _id);
-                            setItem(remaining);
+                            // const remaining = item.filter(craft => craft._id !== _id);
+                            // setItem(remaining);
+                            const remaining = queries.filter(p => p._id !== _id);
+                            setqueries(remaining);
                         }
 
                     })
@@ -77,8 +71,6 @@ const MyQueries = () => {
             <BannerMyQueries></BannerMyQueries>
 
 
-
-
             <div className="max-w-[1200px] mx-auto">
                 <Helmet>
                     <title>shopSwiftly | MyQuries </title>
@@ -92,7 +84,7 @@ const MyQueries = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
 
-                        {queries ? queries.map(p =>
+                        {queries?queries.map(p =>
                             <article key={p._id} className="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
                                 <img
                                     alt=""
@@ -122,14 +114,10 @@ const MyQueries = () => {
                                         <button onClick={() => handledelete(p._id)} className="block text-center  rounded text-white px-6 py-2 text-sm font-medium bg-teal-500 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto">delete </button>
                                         <Link to={`/UpdateQueries/${p._id}`} className="block text-center   rounded text-white px-6 py-2 text-sm font-medium bg-teal-500 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto">eddit </Link>
                                     </div>
-
-
-
-
                                 </div>
 
                             </article>
-                        ) : <article>
+                        ): <article>
                             <p>queries not fond plass add queries</p>
                             <Link to='/addQueries' className="bg-pink-700 text-white py-2 px-7 rounded-md mt-7 inline-block ">add Queries</Link>
                         </article>}

@@ -31,7 +31,7 @@ const Login = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: " add art & craft items ",
+                    title: " user login success ",
                     showConfirmButton: false,
                     timer: 1500
                 });
