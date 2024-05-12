@@ -5,7 +5,7 @@ import axios from "axios";
 import { BsSearch } from "react-icons/bs";
 const Queries = () => {
 
-    const [itemsperpage, setitemsperpage] = useState(9)
+    const [itemsperpage, setitemsperpage] = useState(6)
     const [counts, setCounts] = useState(0)
     const [filter, setFilter] = useState('')
     const numberofPage = Math.ceil(counts / itemsperpage);

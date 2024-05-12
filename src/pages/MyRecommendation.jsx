@@ -15,21 +15,10 @@ const MyRecommendation = () => {
 
 
     console.log(ite)
-    // const [parent, setparent] = useState([])
 
-    // console.log(parent)
 
     // .......................................
     useEffect(() => {
-
-// fetch(`http://localhost:5000/myRecommendation?email=${user?.email}`, {
-//             credentials: 'include'
-//         })
-//             .then((res) => res.json())
-//             .then((data) => {
-//                 setqueries(data);
-
-//             });
 
 
 

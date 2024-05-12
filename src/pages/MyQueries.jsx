@@ -11,12 +11,12 @@ import BannerMyQueries from "../components/BannerMyQueries";
 const MyQueries = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth() || {}
-   const [queries, setqueries] = useState([])
-   
-    console.log(user.email)
+    const [queries, setqueries] = useState([])
+
+    console.log(user?.email)
 
     useEffect(() => {
-        
+
         getData()
     }, [user])
     const getData = async () => {
@@ -84,7 +84,7 @@ const MyQueries = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
 
-                        {queries?queries.map(p =>
+                        {queries.length ? queries.map(p =>
                             <article key={p._id} className="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
                                 <img
                                     alt=""
@@ -99,7 +99,7 @@ const MyQueries = () => {
                                     <h2 className="block text-[16px] text-gray-900 "> {p.productName} </h2>
 
                                     <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                                    {p.brandName}
+                                        {p.brandName}
                                     </p>
                                     <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs text-gray-400">
                                         <span>{p.createAt} </span>
@@ -117,9 +117,13 @@ const MyQueries = () => {
                                 </div>
 
                             </article>
-                        ): <article>
-                            <p>queries not fond plass add queries</p>
-                            <Link to='/addQueries' className="bg-pink-700 text-white py-2 px-7 rounded-md mt-7 inline-block ">add Queries</Link>
+                        ) : <article className=" w-full flex justify-center items-center flex-col text-center ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>
+                            <h1 className="mt-3 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">Queries not found</h1>
+
+                            <Link to='/addQueries' className="bg-teal-500 text-white py-2 px-7 rounded-md mt-7 inline-block ">add Queries</Link>
                         </article>}
 
 

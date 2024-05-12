@@ -9,14 +9,12 @@ const RecentQueries = () => {
 
     return (
         <div>
-            <div className="flex justify-between items-center">
-                <h2 className="text-center text-2xl text-slate-600 my-7">recent quries</h2>
-
-                <div className='text-center mt-6'>
-                    <button
+            <div className="flex justify-between items-center mt-24">
+                <h2 className="w-4/5  text-2xl text-slate-600 my-7 border-b-2  pb-3 border-double">Recent  Quries</h2>
+                <button
                         // onClick={() => setDataLength(items.length)}
-                        className="py-2 px-7 bg-teal-500 text-white rounded-sm">Show All </button>
-                </div>
+                    className="py-2 px-7 border border-teal-500 text-teal-500 rounded-sm">Show All </button>
+              
             </div>
 
 

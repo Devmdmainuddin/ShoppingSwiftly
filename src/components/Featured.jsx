@@ -2,7 +2,7 @@
 
 const Featured = () => {
     return (
-        <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8">
+        <div className="lg:px-5 md:px-6 px-4 md:py-12 py-8">
         <div className="lg:flex items-center justify-between">
             <div className="lg:w-1/3">
                 <h1 className="text-4xl font-semibold leading-9 text-gray-800">Indoor Interiors</h1>

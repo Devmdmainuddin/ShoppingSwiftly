@@ -23,7 +23,6 @@ const QueriesDetails = () => {
     const handleAddProduct = async (e) => {
 
         e.preventDefault();
-        console.log('ok')
         const form = e.target;
         const image = form.image.value;
         const retitle = form.title.value;
@@ -54,9 +53,12 @@ const QueriesDetails = () => {
 
                 const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${items._id}`, recoupdate)
                 console.log(data)
-                const filteritems = recomment.filter(p => p.queryId == items._id)
-                // console.log(filteritems)
-                setrecommentitems(filteritems)
+
+                axios.get(`${import.meta.env.VITE_API_URL}/recommendation`)
+                .then(data => {
+                    const filteritems = data.data.filter(p => p.queryId == items._id)
+                    setrecommentitems(filteritems)
+                })
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -93,7 +95,7 @@ const QueriesDetails = () => {
     return (
         <div>
             <Helmet>
-                <title>Brush Tech Artisty | CraftDetails </title>
+                <title>shopSwiftly | QueriesDetails </title>
             </Helmet>
 
             <div className="bg-gray-100 dark:bg-gray-800 py-8">
@@ -132,12 +134,12 @@ const QueriesDetails = () => {
             </div>
             <div className="py-8 px-4">
                 <h2 className="text-center text-2xl text-slate-600 my-7">Add A Recommendation products</h2>
-                <form onSubmit={handleAddProduct} className='mt-12'>
+                <form onSubmit={handleAddProduct} className='mt-12 max-w-[768px] mx-auto'>
                     <div className="flex gap-8 ">
                         <div className="flex-1 items-start">
                             <label className="block mb-2 dark:text-white" htmlFor="title">recommendation title</label>
                             <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="recommendation title"
                                 id="title"
@@ -147,7 +149,7 @@ const QueriesDetails = () => {
                                 recommendation product Name
                             </label>
                             <input
-                                className="w-full p-2 border rounded-md focus:border-[#FF497C] focus:outline-none"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="recommendation product Name"
                                 id="recProName"
@@ -161,7 +163,7 @@ const QueriesDetails = () => {
                                 Recommended Product Image
                             </label>
                             <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="Recommended Product Image URL"
                                 id="image"
@@ -169,7 +171,7 @@ const QueriesDetails = () => {
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="reReason">Recommended reason</label>
                             <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="Recommended reason"
                                 id="reReason"
@@ -179,9 +181,9 @@ const QueriesDetails = () => {
                     </div>
 
                     <input
-                        className="inline-block w-full rounded bg-indigo-600 mt-4 px-4 py-3 text-sm font-medium text-white transition hover:scale-105 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+                        className="inline-block w-full rounded bg-teal-500 mt-4 px-4 py-3 text-sm font-medium text-white transition hover:scale-105 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
                         type="submit"
-                        value="Add Product"
+                        value="Add Recommended"
                     />
 
                 </form>

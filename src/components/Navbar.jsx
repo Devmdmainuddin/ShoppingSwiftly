@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { Tooltip } from 'react-tooltip'
@@ -28,7 +28,14 @@ const Navbar = () => {
             .then(() => console.log('user logged successfully'))
             .catch(error => console.error(error))
     }
-
+    
+    useEffect(() => {
+        localStorage.setItem('theme', theme)
+        const localTheme = localStorage.getItem('theme')
+    
+        // add custom data-theme attribute
+        document.querySelector('html').setAttribute('data-theme', localTheme)
+      }, [theme])
 
 
 

@@ -4,11 +4,11 @@ import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
-//import { useState } from 'react';
+
 
 const AddQueries = () => {
     const { user } = useAuth() || {}
-   // const [date, setDate] = useState(new Date());
+   
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
@@ -26,7 +26,7 @@ const AddQueries = () => {
         const recommendationCount = 0;
         const userInfo = {name,email,userImage}
 
-        // console.log(name, price, image, type)
+      
 
         const info = {  image, productName,brandName,queryTitle,boycotReason,createAt,recommendationCount,userInfo };
 
@@ -38,7 +38,7 @@ const AddQueries = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: " add art & craft items ",
+                    title: " add Queries items ",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -49,7 +49,7 @@ const AddQueries = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: " add art & craft items faile",
+                title: " add Queries items faile",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -71,14 +71,14 @@ const AddQueries = () => {
                 </div>
 
 
-                <form onSubmit={handleAddProduct} className='mt-12'>
+                <form onSubmit={handleAddProduct} className='mt-12 max-w-[786px] mx-auto'>
                     <div className="flex gap-8 ">
                         <div className="flex-1 items-start">
                             <label className="block mb-2 dark:text-white" htmlFor="productName">
                             product Name
                             </label>
                             <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="products Name"
                                 id="productName"
@@ -92,7 +92,7 @@ const AddQueries = () => {
                                brand Name
                             </label>
                             <input
-                                className="w-full p-2 border rounded-md focus:border-[#FF497C] focus:outline-none"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="brand Name"
                                 id="brandName"
@@ -106,7 +106,7 @@ const AddQueries = () => {
                                 Query Title
                             </label>
                             <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="Query Title"
                                 id="queryTitle"
@@ -122,7 +122,7 @@ const AddQueries = () => {
                                 Image
                             </label>
                             <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="Enter Image URL"
                                 id="image"
@@ -132,47 +132,22 @@ const AddQueries = () => {
                             boycot Reason
                             </label>
                             <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
+                                className="w-full p-2 border rounded-md focus:border-teal-500 focus:outline-none"
                                 type="text"
                                 placeholder="  boycot Reason"
                                 id="boycotReason"
                                 name="boycotReason"
                             />
 
-                            {/* <label
-                                className="block mt-4 mb-2 dark:text-white"
-                                htmlFor="currentTime"
-                            >
-                                current Time
-                            </label>
-                            <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
-                                type="date"
-                                placeholder="current Time"
-                                id="currentTime"
-                                name="currentTime"
-                            /> */}
-                            {/* <label
-                                className="block mt-4 mb-2 dark:text-white"
-                                htmlFor="currentTime"
-                            >
-                                recommendation Count
-                            </label>
-                            <input
-                                className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
-                                type="number"
-                                placeholder="recommendation Count"
-                                id="recommendationCount"
-                                name="recommendationCount"
-                            /> */}
+                           
 
                         </div>
                     </div>
                    
                     <input
-                        className="inline-block w-full rounded bg-indigo-600 mt-4 px-4 py-3 text-sm font-medium text-white transition hover:scale-105 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+                        className="inline-block w-full rounded bg-teal-500 mt-4 px-4 py-3 text-sm font-medium text-white transition hover:scale-105 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
                         type="submit"
-                        value="Add Product"
+                        value="Add Queries"
                     />
 
                 </form>

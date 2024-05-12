@@ -73,7 +73,7 @@ const Register = () => {
 				//toast.success('user register successfully')
 				const createdAt = result.user?.metadata?.creationTime;
 				const users = { fullName, image, email, createdAt: createdAt };
-				fetch('http://localhost:5000/user', {
+				fetch(`${import.meta.env.VITE_API_URL}/user`, {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json'
