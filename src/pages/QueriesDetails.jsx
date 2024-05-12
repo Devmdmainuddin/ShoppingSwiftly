@@ -44,8 +44,11 @@ const QueriesDetails = () => {
 
 
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/addRecommendation`, info)
-            console.log(data)
+            if(user.email !== autherEmail){
+                const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/addRecommendation`, info)
+                console.log(data)
+           
+            
             if (data?.insertedId) {
                 form.reset();
 
@@ -62,7 +65,15 @@ const QueriesDetails = () => {
                     timer: 1500
 
                 });
-
+            }
+            }else{
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: " you are not allowed add recommendation ",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         }
         catch (err) {
