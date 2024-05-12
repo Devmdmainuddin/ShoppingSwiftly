@@ -1,30 +1,53 @@
-import { useLoaderData } from "react-router-dom";
+
 import Querie from "../components/Querie";
-// import useQueries from "../hooks/useQueries";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { BsSearch } from "react-icons/bs";
 const Queries = () => {
-    // const items = useQueries()
+
     const [itemsperpage, setitemsperpage] = useState(9)
-    const { count } = useLoaderData()
-    const numberofPage = Math.ceil(count / itemsperpage);
+    const [counts, setCounts] = useState(0)
+    const [filter, setFilter] = useState('')
+    const numberofPage = Math.ceil(counts / itemsperpage);
     const [currentPage, setcurrentPage] = useState(0)
+    const [sort, setSort] = useState('')
+    const [search, setSearch] = useState('')
+    const [searchText, setSearchText] = useState('')
     const pages = [...Array(numberofPage).keys()]
     const [items, setitems] = useState([])
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_URL}/queries?page=${currentPage}&size=${itemsperpage}`)
-            .then(data => {
-                setitems(data.data)
-            })
-    }, [currentPage, itemsperpage])
+
+        const getData = async () => {
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/queries?page=${currentPage}&size=${itemsperpage}&filter=${filter}&sort=${sort}&search=${search}`)
+            setitems(data)
+    }
+        getData()
+    }, [currentPage, itemsperpage,filter,sort, search])
+
+useEffect(() => {
+        const getCount = async () => {
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/queriesCount?filter=${filter}&search=${search}`
+            )
+            setCounts(data.count)
+        }
+        getCount()
+    }, [filter,search])
+
 
     const handleItemsPerPage = e => {
         const value = parseInt(e.target.value)
         setitemsperpage(value)
         setcurrentPage(0)
     }
+    const handleReset = () => {
+        setFilter('')
+        setSort('')
+        setSearch('')
+        setSearchText('')
+      }
+
+
     const handlepre = () => {
         if (currentPage > 0) {
             setcurrentPage(currentPage - 1)
@@ -35,7 +58,10 @@ const Queries = () => {
             setcurrentPage(currentPage + 1)
         }
     }
-
+    const handleSearch = e => {
+        e.preventDefault()
+        setSearch(searchText)
+    }
 
 
 
@@ -47,6 +73,74 @@ const Queries = () => {
                 <p>the majority have suffered alteration in some form, by injected humour, or randomised <br /> words which do not look even slightly believable. </p>
 
             </div>
+            <div className='flex flex-col md:flex-row justify-center items-center gap-5 mt-6'>
+            <div>
+            <select
+              onChange={e => {
+                setFilter(e.target.value)
+                setcurrentPage(0)
+              }}
+              value={filter}
+              name='queryTitle'
+              id='queryTitle'
+              className='border p-3 rounded-md bg-gray-100'
+            >
+              <option value=''>Filter By Category</option>
+              <option value='mobile'>mobile</option>
+              <option value='clothing'>clothing</option>
+              <option value='watches'>watches</option>
+              <option value='furniture'>furniture</option>
+              <option value='Laptop'>Laptop</option>
+              <option value='Camera'>Camera</option>
+            </select>
+          </div>
+          <form onSubmit={handleSearch}>
+          <div className="flex">
+         
+                  <div className="relative ">
+                    <input
+                      className="p-4 py-3 outline-none focus pr-10  bg-gray-100 border rounded border-gray-100 text-slate-600   leading-4"
+                      type='text'
+                      onChange={e => setSearchText(e.target.value)}
+                      value={searchText}
+                      name='search'
+                      placeholder='Enter Product Title'
+                      aria-label='Enter Product Title'
+                    
+                    />
+                    <BsSearch className="absolute pointer-events-none top-4 right-5 " />
+                    
+                  </div>
+                  <button className="bg-teal-500  text-white lg:max-w-[164px] font-medium px-6 py-4 w-full  rounded-[4px] leading-[14px] hover:bg-teal-400">
+                    Search
+                  </button>
+                 
+                </div>
+                </form>
+
+         
+          <div>
+            <select
+              onChange={e => {
+                setSort(e.target.value)
+                setcurrentPage(0)
+              }}
+              value={sort}
+              name='sort'
+              id='sort'
+              className='border p-3 rounded-md bg-gray-100'
+            >
+              <option value=''>Sort By Deadline</option>
+              <option value='dsc'>Descending Order</option>
+              <option value='asc'>Ascending Order</option>
+            </select>
+          </div>
+          <button onClick={handleReset} className=' border p-3 rounded-md bg-gray-100 text-green-600'>
+            Reset
+          </button>
+            </div>
+          
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
 
                 {

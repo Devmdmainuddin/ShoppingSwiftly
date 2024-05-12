@@ -10,6 +10,7 @@ import MyRecommendation from '../pages/MyRecommendation';
 import QueriesUpdate from '../pages/QueriesUpdate';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import AddQueries from '../components/AddQueries';
+import RecommendationMe from '../pages/RecommendationMe';
 const router = createBrowserRouter([
     {
       path: "/",
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
           {
             path: "/queries",
             element: <Queries></Queries>,
-            loader: () => fetch(`${import.meta.env.VITE_API_URL}/queriesCount`)
+            // loader: () => fetch(`${import.meta.env.VITE_API_URL}/queriesCount`)
           },
           {
             path: "/queries/:id",
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
           {
             path: "/myrecommendation",
             element: <MyRecommendation></MyRecommendation>,
+          },
+          {
+            path: "/recommendationsMe",
+            element: <RecommendationMe></RecommendationMe>,
+             
           },
       ],
     },
