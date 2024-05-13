@@ -1,4 +1,37 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.section-container{
+    max-width: 800px;
+  
+  }
+  
+.section-grey {
+  background: #F6F7F8;
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: 20px;
+  margin-top: 15px;
+  border-bottom: 2px solid #DADADA;
+}
+
+.section-title .title {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.section-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1.5px;
+  height: 3px;
+  width: 60px;
+  background-color: rgba(71, 176, 74, 0.826);
+}
