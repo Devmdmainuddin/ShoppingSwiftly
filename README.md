@@ -1,8 +1,60 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# shopSwiftly
 
-Currently, two official plugins are available:
+it's a Alternative Product Information Systemt website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Installation
+
+Install my-project with npm
+
+```bash
+  git clone my project
+  cd my-project
+  npm i
+  npm run dev
+```
+    
+## website live link 
+
+
+
+[https://shopswiftly-1c832.web.app/](https://shopswiftly-1c832.web.app/)
+
+
+## Features
+
+
+- slider
+- categorey by sort
+-  Descending order by sort
+- rearch queries
+- all queries
+- add recommendations for me
+- add my queries
+- my recommendations
+
+- Testimonials
+- user profile
+- update user profile
+
+## Appendix
+
+This project is used by the following  
+
+- mongodb database
+- axios
+- match-sorter
+- react-helmet-async
+- react-hook-form
+- react-icons
+- react-toastify
+- react-tooltip
+- sort-by
+- sweetalert2
+- swiper
+
+
+## Authors
+
+- [@devmdmainuddin](https://github.com/Devmdmainuddin)
