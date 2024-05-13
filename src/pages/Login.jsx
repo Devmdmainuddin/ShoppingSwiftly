@@ -9,6 +9,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
 
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -35,9 +36,9 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-             
-                navigate(from,{replace:true})
-                
+
+                navigate(from, { replace: true })
+
 
 
 
@@ -68,11 +69,12 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-           
+            <Helmet>
+                <title>shopSwiftly | login </title>
+            </Helmet>
             <div className="hero-content flex-col md:flex-row">
                 <div className="text-center lg:text-left">
-
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <img className="w-full h-full object-cover" src="https://i.ibb.co/zVDGfK2/sh.jpg" alt="" />
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -107,7 +109,7 @@ const Login = () => {
 
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn text-white bg-teal-500 hover:bg-teal-600">Login</button>
                         </div>
                     </form>
                     <div className="flex items-center pt-4 space-x-1">

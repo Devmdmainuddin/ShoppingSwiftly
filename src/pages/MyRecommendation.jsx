@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useQueries from "../hooks/useQueries";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const MyRecommendation = () => {
     const axiosSecure = useAxiosSecure()
@@ -30,7 +31,7 @@ const MyRecommendation = () => {
         setqueries(data);
     }
 
- 
+
 
     // .........................................................................
 
@@ -39,7 +40,7 @@ const MyRecommendation = () => {
         const updataitems = ite.find(p => p._id === itm.queryId)
         const recommendationCount = (updataitems.recommendationCount) - (1);
         const recoupdate = { recommendationCount }
-       
+
 
         const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${updataitems._id}`, recoupdate)
         console.log(data)
@@ -78,7 +79,9 @@ const MyRecommendation = () => {
 
     return (
         <div>
-
+            <Helmet>
+                <title>shopSwiftly | MyRecommendation </title>
+            </Helmet>
             <section className="container px-4 mx-auto">
                 <div className="flex items-center gap-x-6 justify-center">
                     <h2 className="text-center text-2xl text-slate-600 my-7">my recommendation</h2>

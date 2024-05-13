@@ -37,18 +37,14 @@ const Navbar = () => {
         document.querySelector('html').setAttribute('data-theme', localTheme)
       }, [theme])
 
-
-
-
-
-    return (
+   return (
         <div className='px-4 py-5  max-w-[1170px] mx-auto md:px-24 lg:px-8 '>
             <div className='relative flex items-center justify-between z-40'>
 
                 <Link to='/'
                     aria-label='shopSwiftly'
                     title='shopSwiftly'
-                    className='inline-flex items-center'>shopSwiftly</Link>
+                    className='inline-flex items-center'><img className="h-[40px]" src="https://i.ibb.co/K5LJ1TG/logo.jpg" alt="" /></Link>
 
                 <ul className='items-center hidden gap-x-6 lg:flex'>
                     <li>

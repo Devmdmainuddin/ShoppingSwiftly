@@ -3,6 +3,7 @@ import Querie from "../components/Querie";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BsSearch } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 const Queries = () => {
 
     const [itemsperpage, setitemsperpage] = useState(6)
@@ -67,6 +68,9 @@ useEffect(() => {
 
     return (
         <div className="mt-4">
+            <Helmet>
+                <title>shopSwiftly | Qreries </title>
+            </Helmet>
             <div className="text-center">
                 <h3 className="text-2xl font-bold text-orange-600">Our Services</h3>
                 <h2 className="text-5xl">Our Service Area</h2>

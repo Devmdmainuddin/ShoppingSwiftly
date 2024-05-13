@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2'
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 const QueriesUpdate = () => {
     const queries =useLoaderData();
 
@@ -43,6 +44,9 @@ const QueriesUpdate = () => {
     };
     return (
         <div>
+            <Helmet>
+                <title>shopSwiftly | QreriesUpdate </title>
+            </Helmet>
             <h2>update</h2>
 
             <form onSubmit={handleAddProduct} className='mt-12'>
