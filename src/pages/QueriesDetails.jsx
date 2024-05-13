@@ -181,7 +181,7 @@ const QueriesDetails = () => {
                     </div>
 
                     <input
-                        className="inline-block w-full rounded bg-teal-500 mt-4 px-4 py-3 text-sm font-medium text-white transition hover:scale-105 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+                        className="inline-block w-full rounded bg-teal-500 mt-4 px-4 py-3 text-sm font-medium text-white transition  focus:outline-none focus:ring active:bg-indigo-500"
                         type="submit"
                         value="Add Recommended"
                     />
@@ -200,7 +200,7 @@ const QueriesDetails = () => {
                         <img
                             alt=""
                             src={p.image}
-                            className="h-56 w-full object-cover"
+                            className="h-56 w-full object-cover "
                         />
 
                         <div className="bg-white p-4 sm:p-6">
@@ -221,7 +221,7 @@ const QueriesDetails = () => {
                                 <span> {p.reuserInfo.reName} </span>
                                 <span>{p.reuserInfo.reEmail}</span>
                             </div>
-                            <Link to={`/queries/${p._id}`} className="block text-center mt-3 w-full rounded text-white px-12 py-3 text-sm font-medium bg-rose-600 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto" ><button>recommend</button></Link>
+                            <Link to={`/queries/${p._id}`} className="block text-center mt-3 w-full rounded text-white px-12 py-3 text-sm font-medium bg-teal-500 shadow  focus:outline-none focus:ring active:text-rose-500 sm:w-auto" ><button>recommend</button></Link>
                         </div>
 
                     </article>

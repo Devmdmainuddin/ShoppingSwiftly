@@ -16,13 +16,13 @@ const Querie = ({item}) => {
             <h3 className="mt-1 text-lg text-gray-900"> {productName} </h3>
             <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs text-gray-600 mt-1">
                 <span>Brand : {brandName} </span>
-                <span>ALternation reason : {boycotReason}</span>
+                <span>reason : {boycotReason}</span>
             </div>
             <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs text-gray-600 mt-1">
                 <span>posted :{createAt} </span>
-                <span>recommendationCount : {recommendationCount}</span>
+                <span>recommenCount : {recommendationCount}</span>
             </div>
-            <p className="text-center py-1">author info</p>
+           
             <div className="flex  justify-between items-center pt-3 space-x-2 text-xs text-gray-400">
                 <span> <img className="w-12 rounded-full" src={userInfo.userImage?userInfo.userImage:"https://i.ibb.co/n3pxCKM/profile.png"} alt="" /> </span>
                 <span>{userInfo.name}</span>
