@@ -45,14 +45,14 @@ const QueriesDetails = () => {
         try {
             if(user.email !== autherEmail){
                 const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/addRecommendation`, info)
-                console.log(data)
+                // console.log(data)
            
             
             if (data?.insertedId) {
                 form.reset();
 
                 const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${items._id}`, recoupdate)
-                console.log(data)
+                 console.log(data)
 
                 axios.get(`${import.meta.env.VITE_API_URL}/recommendation`)
                 .then(data => {
@@ -79,7 +79,7 @@ const QueriesDetails = () => {
             }
         }
         catch (err) {
-            console.log(err)
+            // console.log(err)
             Swal.fire({
                 position: "top-end",
                 icon: "error",

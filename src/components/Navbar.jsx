@@ -14,7 +14,7 @@ const Navbar = () => {
 
 
 
-    console.log(theme)
+    // console.log(theme)
     const handleToggle = e => {
         if (e.target.checked) {
             setTheme('dark')
@@ -25,7 +25,7 @@ const Navbar = () => {
 
     const handlelogOut = () => {
         logOut()
-            .then(() => console.log('user logged successfully'))
+            .then(() =>  console.log('user logged successfully'))
             .catch(error => console.error(error))
     }
     

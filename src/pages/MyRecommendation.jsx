@@ -15,7 +15,7 @@ const MyRecommendation = () => {
     const [queries, setqueries] = useState([])
 
 
-    console.log(ite)
+    // console.log(ite)
 
 
     // .......................................
@@ -43,7 +43,7 @@ const MyRecommendation = () => {
 
 
         const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updaterecommen/${updataitems._id}`, recoupdate)
-        console.log(data)
+         console.log(data)
 
         Swal.fire({
             title: "Are you sure?",
@@ -62,7 +62,7 @@ const MyRecommendation = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        // console.log(data)
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",

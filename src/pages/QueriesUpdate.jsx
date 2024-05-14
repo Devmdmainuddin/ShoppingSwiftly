@@ -7,7 +7,7 @@ const QueriesUpdate = () => {
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
-        console.log('ok')
+        // console.log('ok')
         const form = e.target;
         const image = form.image.value;
         const productName = form.productName.value;
@@ -18,7 +18,7 @@ const QueriesUpdate = () => {
 
         try {
             const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/updateQueries/${queries._id}`, info)
-            console.log(data)
+             console.log(data)
             if (data?.insertedId) {
                 form.reset();
                 Swal.fire({
@@ -31,7 +31,7 @@ const QueriesUpdate = () => {
             }
         }
         catch (err) {
-            console.log(err)
+             console.log(err)
             Swal.fire({
                 position: "top-end",
                 icon: "error",

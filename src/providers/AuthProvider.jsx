@@ -75,12 +75,12 @@ const AuthProvider = ({ children }) => {
                 
                 axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser,{withCredentials:true})
                 .then(res => {
-                            console.log('token response', res.data);  
+                            // console.log('token response', res.data);  
                         })
             }else{
                 axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser,{withCredentials:true})
                 .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         })
             }
 

@@ -22,45 +22,15 @@ const Register = () => {
 	const onSubmit = (data) => {
 		// data.preventDefault();
 		const { email, password, image, fullName } = data;
-		if (password.length < 6) {
-			Swal.fire({
-				position: "top-end",
-				icon: "error",
-				title: "password must have a  6 letter",
-				showConfirmButton: false,
-				timer: 1500
-			});
-			//toast.error('error.message')
-			return
-		}
-		if (!/[A-Z]/.test(password)) {
-			Swal.fire({
-				position: "top-end",
-				icon: "error",
-				title: "password must have a  uppercase  letter",
-				showConfirmButton: false,
-				timer: 1500
-			});
-			//toast.error("password must have a  uppercase  letter")
-			return
-		}
+		
+	
 
-		if (!/[a-z]/.test(password)) {
-			Swal.fire({
-				position: "top-end",
-				icon: "error",
-				title: "password must have a capital letter",
-				showConfirmButton: false,
-				timer: 1500
-			});
-			//toast.error('password must have a capital letter')
-			return
-		}
+	
 
 		createUser(email, password)
 
 			.then(result => {
-				console.log('user created succesfully !', result.user)
+				// console.log('user created succesfully !', result.user)
 				updateUserProfile(fullName, image)
 				navigate(from);
 				Swal.fire({
@@ -83,7 +53,7 @@ const Register = () => {
 					.then(res => res.json())
 					.then(data => {
 
-						console.log('inside post', data)
+						// console.log('inside post', data)
 						if (data.insertedId) {
 							//	alert('users added successfully')
 							toast.success('users added successfully')
@@ -101,8 +71,8 @@ const Register = () => {
 					showConfirmButton: false,
 					timer: 1500
 				});
-				//	toast.error(error.message)
-				console.log('error', error.message)
+					toast.error(error.message)
+				// console.log('error', error.message)
 				setloader(false)
 			});
 

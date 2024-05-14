@@ -12,7 +12,7 @@ const AddQueries = () => {
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
-        console.log('ok')
+        // console.log('ok')
         const form = e.target;
         const image = form.image.value;
         const productName = form.productName.value;
@@ -32,7 +32,7 @@ const AddQueries = () => {
 
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/addQueries`, info)
-            console.log(data)
+            // console.log(data)
             if (data?.insertedId) {
                 form.reset();
                 Swal.fire({
@@ -45,7 +45,7 @@ const AddQueries = () => {
             }
         }
         catch (err) {
-            console.log(err)
+            // console.log(err)
             Swal.fire({
                 position: "top-end",
                 icon: "error",

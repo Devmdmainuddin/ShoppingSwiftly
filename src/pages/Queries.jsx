@@ -68,7 +68,7 @@ const Queries = () => {
 const handlesorts = e =>{
     
     const value = e.target.value
-    console.log(value)
+    // console.log(value)
     const main = document.getElementById('gridLayout')
     if(value === '3col'){
         main.classList.add('grid-cols-3')
