@@ -28,7 +28,7 @@ const Login = () => {
         signInUser(email, password)
             .then((res) => {
                 const user = res.user;
-                // console.log(user)
+                console.log(user)
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -52,7 +52,7 @@ const Login = () => {
                     timer: 1500
                 });
                 //toast.error(error.message)
-                // console.log('error', error.message)
+                console.log('error', error.message)
                 setloader(false)
             })
     };
